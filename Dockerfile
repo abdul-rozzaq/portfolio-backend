@@ -4,7 +4,7 @@ RUN apk add --no-cache build-base vips-dev
 WORKDIR /app
 
 COPY package.json ./
-RUN npm ci && npm cache clean --force
+RUN npm i && npm cache clean --force
 
 COPY . .
 
