@@ -3,7 +3,7 @@ FROM node:24-alpine3.21 AS builder
 RUN apk add --no-cache build-base vips-dev
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm ci && npm cache clean --force
 
 COPY . .
@@ -17,8 +17,8 @@ RUN apk add --no-cache vips
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci && npm cache clean --force
+COPY package.json ./
+RUN npm i && npm cache clean --force
 
 COPY ./favicon.png ./favicon.png
 COPY ./public ./public
